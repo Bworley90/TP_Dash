@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.28502667, g: 0.37139323, b: 0.49600998, a: 1}
+  m_IndirectSpecularColor: {r: 0.2850269, g: 0.3713935, b: 0.49601045, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -764,7 +764,7 @@ GameObject:
   - component: {fileID: 757692331}
   - component: {fileID: 757692332}
   m_Layer: 0
-  m_Name: IsleGenerator
+  m_Name: AisleGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -778,7 +778,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 757692330}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -84.7, y: 0, z: -260.6}
+  m_LocalPosition: {x: -80.7, y: 0, z: -203.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -796,13 +796,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8883539f5e569b942abd5e77603a13ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isleModel: {fileID: 7610226471713101633, guid: 9edc7f8d5df641a42b4d9cd88e70753e,
+  aisleModel: {fileID: 7610226471713101633, guid: 9edc7f8d5df641a42b4d9cd88e70753e,
     type: 3}
-  xDistanceBetween: 13
-  zDistanceBetween: 10
-  xDepth: 20
-  zDepth: 30
+  xDistanceBetween: 10
+  zDistanceBetween: 17
+  xDepth: 12
+  zDepth: 13
   addRandomness: 0
+  showSpacing: 0
 --- !u!1 &841646880
 GameObject:
   m_ObjectHideFlags: 0
