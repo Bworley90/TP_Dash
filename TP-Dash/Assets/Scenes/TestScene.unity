@@ -455,12 +455,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da1a80dc0a4a7e4b8ee404e8e46ac08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aisleModel: {fileID: 4823092512149279889, guid: c8332f23c49a6ce4c97cba3573ecb760,
+  aisleModel: {fileID: 928597067964801374, guid: 879640baecccdbe4792d6f46eb72331e,
     type: 3}
-  xDistanceBetween: 19.7
-  zDistanceBetween: 16
-  xDepth: 12
-  zDepth: 4
+  xDistanceBetween: 18.4
+  zDistanceBetween: 10.3
+  xDepth: 11
+  zDepth: 12
   addRandomness: 0
   showSpacing: 1
 --- !u!1001 &956170830
@@ -817,7 +817,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1529450147}
-  - component: {fileID: 1529450146}
   m_Layer: 0
   m_Name: TP Spot Generation
   m_TagString: Untagged
@@ -825,18 +824,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1529450146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1529450145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 616a5d0e8b04a974d955e8fd3febe5c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1529450147
 Transform:
   m_ObjectHideFlags: 0
