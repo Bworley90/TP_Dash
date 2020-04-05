@@ -67,9 +67,6 @@ public class AisleGeneration : MonoBehaviour
         }
 
     }
-
-
-
     private void SetValues()
     {
         zDistanceBetween += aisleModel.GetComponent<MeshRenderer>().bounds.size.z;
