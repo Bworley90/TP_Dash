@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AisleGenerator : MonoBehaviour
+public class AisleGeneration : MonoBehaviour
 {
-    public GameObject aisleModel;
+    public GameObject aisleModel;  
     [Range(0f, 30f)]
     public float xDistanceBetween;
     [Range(0f, 50f)]
@@ -21,7 +21,7 @@ public class AisleGenerator : MonoBehaviour
     private void Start()
     {
         SetValues();
-        if(addRandomness)
+        if (addRandomness)
         {
             RandomIsleSetup();
         }
@@ -45,7 +45,7 @@ public class AisleGenerator : MonoBehaviour
             }
             startPos += heightBetweenRows;
             startPos.x = xStartPos;
-           
+
         }
     }
     private void RandomIsleSetup()
@@ -63,10 +63,12 @@ public class AisleGenerator : MonoBehaviour
             startPos += heightBetweenRows;
             startPos.x = xStartPos;
 
-        
+
         }
-        
+
     }
+
+
 
     private void SetValues()
     {
@@ -78,7 +80,7 @@ public class AisleGenerator : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if(showSpacing)
+        if (showSpacing)
         {
             Vector3 currentPosition = transform.position;
             float zPos = transform.position.z;
@@ -95,6 +97,6 @@ public class AisleGenerator : MonoBehaviour
             }
 
         }
-        
+
     }
 }
