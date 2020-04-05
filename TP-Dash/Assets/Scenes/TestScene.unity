@@ -437,7 +437,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 757692330}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -233, y: 0, z: -203.5}
+  m_LocalPosition: {x: -126.2, y: 0, z: -248}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -455,14 +455,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da1a80dc0a4a7e4b8ee404e8e46ac08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aisleModel: {fileID: 6622072724752861034, guid: 0266a26ee8c6c5a40bb73f2db9c7874e,
+  aisleModel: {fileID: 4823092512149279889, guid: c8332f23c49a6ce4c97cba3573ecb760,
     type: 3}
-  xDistanceBetween: 10
-  zDistanceBetween: 10
+  xDistanceBetween: 19.7
+  zDistanceBetween: 16
   xDepth: 12
-  zDepth: 15
+  zDepth: 4
   addRandomness: 0
-  showSpacing: 0
+  showSpacing: 1
 --- !u!1001 &956170830
 PrefabInstance:
   m_ObjectHideFlags: 0
