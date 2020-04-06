@@ -8,4 +8,6 @@ public class RoomLayouts : MonoBehaviour
     public GameObject[] rightOpen;
     public GameObject[] topOpen;
     public GameObject[] bottomOpen;
+
+    public GameObject blocker;
 }

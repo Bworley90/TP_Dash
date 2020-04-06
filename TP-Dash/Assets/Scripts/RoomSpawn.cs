@@ -25,7 +25,8 @@ public class RoomSpawn : MonoBehaviour
 
 
     private void Spawn()
-    {   if(!spawned)
+    {
+        if (!spawned)
         {
             if (openDirection == 1) // Spawn room with door on top
             {
@@ -45,15 +46,42 @@ public class RoomSpawn : MonoBehaviour
             }
         }
         spawned = true;
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "SpawnPoint" && other.gameObject.GetComponent<RoomSpawn>().spawned == true)
+
+        if (other.gameObject.tag == "SpawnPoint")
         {
-            Destroy(gameObject);
+            
+                if (other.gameObject.GetComponent<RoomSpawn>().spawned == false && spawned == false)
+                {
+                    Instantiate(layout.blocker, transform);
+                    Destroy(gameObject);
+                }
+            
+            else
+            {
+                print(other.name);
+            }
+
+            spawned = true;
         }
     }
 
+
+    private void Test(Collider other)
+    {
+        /*if (other.gameObject.tag == "SpawnPoint")
+       {
+           if(other.gameObject.GetComponent<RoomSpawn>().spawned == false && spawned == false)
+           {
+               Instantiate(layout.blocker, transform);
+               Destroy(gameObject);
+           }
+           spawned = true;
+       } */
+
+    }
 }

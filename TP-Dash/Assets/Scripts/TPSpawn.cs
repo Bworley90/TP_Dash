@@ -20,7 +20,6 @@ public class TPSpawn : MonoBehaviour
     {
         if(gm.tpSpawned < gm.tpTotal)
         {
-            print(transform.childCount);
             for (int i = 0; i < transform.childCount; i++)
             {
                 int randomNumber = Random.Range(0, 100);
@@ -28,10 +27,6 @@ public class TPSpawn : MonoBehaviour
                 {
                     Instantiate(gm.tp, transform.GetChild(i).transform);
                     gm.tpSpawned++;
-                }
-                else
-                {
-                   
                 }
             }
         }
