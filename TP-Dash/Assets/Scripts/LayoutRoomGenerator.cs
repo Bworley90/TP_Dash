@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class LayoutRoomGenerator : MonoBehaviour
 {
-    public RoomLayoutPrefabs rlp;
-    public bool side;
-    public bool corner;
-    public bool middle;
+    private RoomLayoutPrefabs rlp;
+
+    public enum RoomType {Side, Corner, Middle};
+    public RoomType roomType;
+
 
     private void Start()
     {
@@ -17,15 +18,15 @@ public class LayoutRoomGenerator : MonoBehaviour
 
     private void ChooseARoom()
     {
-        if(side)
+        if(roomType == RoomType.Side)
         {
             Instantiate(rlp.sides[Random.Range(0, rlp.sides.Length)], transform);
         }
-        else if (corner)
+        else if (roomType == RoomType.Corner)
         {
             Instantiate(rlp.corners[Random.Range(0, rlp.corners.Length)], transform);
         }
-        else if (middle)
+        else if (roomType == RoomType.Middle)
         {
             Instantiate(rlp.middles[Random.Range(0, rlp.middles.Length)], transform);
         }
