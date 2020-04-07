@@ -503,7 +503,7 @@ MonoBehaviour:
   openDirection: 0
   roomExists: 1
   roomSpawned: 1
-  blockerSpawned: 0
+  blockerSpawned: 1
 --- !u!1 &2138677391
 GameObject:
   m_ObjectHideFlags: 0

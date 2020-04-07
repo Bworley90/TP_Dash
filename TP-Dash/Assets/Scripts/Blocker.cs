@@ -4,11 +4,23 @@ using UnityEngine;
 
 public class Blocker : MonoBehaviour
 {
-    private void OnTriggerStay(Collider other)
+    public bool exists = false;
+    private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("SpawnPoint"))
+        if(other.GetComponent<RoomGenerator>() != null)
         {
-            
+            if(other.GetComponent<RoomGenerator>().openDirection == 0)
+            {
+                if(other.GetComponent<Blocker>() != null)
+                {
+                   if(other.GetComponent<Blocker>().exists == true)
+                    {
+                        Destroy(other.transform.parent.gameObject);
+                    }
+                }
+            }
         }
     }
+
+    
 }

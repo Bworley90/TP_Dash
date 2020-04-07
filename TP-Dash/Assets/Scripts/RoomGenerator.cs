@@ -7,14 +7,15 @@ public class RoomGenerator : MonoBehaviour
     public int openDirection;
     private RoomLayouts rm;
     public bool roomExists = false;
-    public bool blockerSpawned = false;
     public bool roomSpawned = false;
+    public bool blockerSpawned = false;
+    
 
 
     private void Start()
     {
         rm = GameObject.FindGameObjectWithTag("RoomLayout").GetComponent<RoomLayouts>();
-        Invoke("RoomSpawn", 0.1f);
+        Invoke("RoomSpawn", 1f);
     }
 
 
@@ -50,27 +51,11 @@ public class RoomGenerator : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
-    { 
-        if(other.CompareTag("SpawnPoint"))
-        {
-            roomExists = true;
-            if(!blockerSpawned)
-            {
-                if (other.GetComponent<RoomGenerator>() != null)
-                {
-                    if (!other.GetComponent<RoomGenerator>().roomSpawned && !roomSpawned)
-                    {
-                        Instantiate(rm.blocker, transform);
-                        blockerSpawned = true;
-                    }
-                }
-            }
-            
-        }
-    }
+  
+    
+}
 
     
 
 
-}
+
