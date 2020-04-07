@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3374237540209748777}
   - component: {fileID: 9074535825545795536}
   - component: {fileID: 3533376287044253779}
+  - component: {fileID: 690635001019356342}
   m_Layer: 0
   m_Name: CheckOutCounter
   m_TagString: Untagged
@@ -98,3 +99,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: dc31af7ebf7210446a23126420806429, type: 3}
+--- !u!65 &690635001019356342
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7337468036236223244}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.6650085, y: 3.799101, z: 13.971901}
+  m_Center: {x: -0.28637052, y: 0.8995503, z: -0.16364415}
