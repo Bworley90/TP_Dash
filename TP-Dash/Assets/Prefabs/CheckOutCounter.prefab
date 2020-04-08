@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9074535825545795536}
   - component: {fileID: 3533376287044253779}
   - component: {fileID: 690635001019356342}
+  - component: {fileID: 4280707542146244479}
   m_Layer: 0
   m_Name: CheckOutCounter
   m_TagString: Untagged
@@ -107,8 +108,20 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7337468036236223244}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 7.6650085, y: 3.799101, z: 13.971901}
   m_Center: {x: -0.28637052, y: 0.8995503, z: -0.16364415}
+--- !u!114 &4280707542146244479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7337468036236223244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88a2a05e485c334aa9a7e0ed7509dd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -5,19 +5,25 @@ using UnityEngine;
 public class CheckOut : MonoBehaviour
 {
     private GameManager gm;
-    private bool checkOutWait;
+    private bool checkOutWait = false;
 
     private void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if(gm.tpCollected > 0 && !checkOutWait) // If we have TP collected
+        if(other.CompareTag("Player"))
         {
-            checkOutWait = true;
-            //CouRotuine
+            if (gm.tpCollected > 0 && !checkOutWait) // If we have TP collected
+            {
+                checkOutWait = true;
+                StartCoroutine(TakeTP());
+                other.GetComponent<AudioSource>().PlayOneShot
+                    (GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().checkOutNoise);
+            }
         }
+        
     }
 
 

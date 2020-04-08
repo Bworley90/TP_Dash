@@ -15,6 +15,8 @@ public class TPCollect : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             // Play animation for destruction
+            other.GetComponentInChildren<ParticleSystem>().Play();
+            other.GetComponent<AudioSource>().PlayOneShot(GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().tpCollectNoise);
             gm.tpCollected++;
             Destroy(gameObject);
         }
