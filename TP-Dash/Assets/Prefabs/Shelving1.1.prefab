@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 5097996531520497388}
   - component: {fileID: 1550137391203228181}
   - component: {fileID: 9123741595934750658}
+  - component: {fileID: 1823031244870344917}
+  - component: {fileID: 4608400927277626637}
   m_Layer: 0
   m_Name: Shelving1.1
   m_TagString: Untagged
@@ -97,9 +99,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00f5ca4bd3d3ab347abb59bdf43017d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxes: []
   colorChoices:
   - {r: 1, g: 0, b: 0, a: 0}
   - {r: 1, g: 0, b: 0.7879014, a: 0}
   - {r: 0.12220454, g: 1, b: 0, a: 0}
   - {r: 0, g: 0.8245816, b: 1, a: 0}
+--- !u!208 &1823031244870344917
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990765195777945289}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2, y: 12.882001, z: 1}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -1, y: 11.882001, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!65 &4608400927277626637
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990765195777945289}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.000003, y: 25.763948, z: 2}
+  m_Center: {x: -1.0000013, y: 11.881973, z: -0.000000059604645}
