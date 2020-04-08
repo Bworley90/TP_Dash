@@ -11,7 +11,7 @@ public class TPSpawn : MonoBehaviour
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         spawnChancePercentage = gm.difficulty;
-        SpawnTP();
+        SpawnTP(); 
     }
 
 
