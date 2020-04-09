@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class LayoutRoomGenerator : MonoBehaviour
 {
@@ -10,13 +11,12 @@ public class LayoutRoomGenerator : MonoBehaviour
     public RoomType roomType;
 
 
-    private void Start()
+    private void Awake()
     {
         rlp = GameObject.FindGameObjectWithTag("RoomLayout").GetComponent<RoomLayoutPrefabs>();
-        ChooseARoom();
     }
 
-    private void ChooseARoom()
+    public void ChooseARoom()
     {
         if(roomType == RoomType.Side)
         {
@@ -31,4 +31,6 @@ public class LayoutRoomGenerator : MonoBehaviour
             Instantiate(rlp.middles[Random.Range(0, rlp.middles.Length)], transform);
         }
     }
+
+   
 }
