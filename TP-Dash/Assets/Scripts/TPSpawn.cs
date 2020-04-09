@@ -33,4 +33,9 @@ public class TPSpawn : MonoBehaviour
         
     }
 
+
+    public void SpawnRandomTPinPrefab()
+    {
+        Transform[] spawnPoints = GetComponentsInChildren<Transform>();// left here
+    }
 }

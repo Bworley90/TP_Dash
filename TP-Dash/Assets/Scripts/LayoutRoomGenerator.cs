@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class LayoutRoomGenerator : MonoBehaviour
 {
     private RoomLayoutPrefabs rlp;
 
-    public enum RoomType {Side, Corner, Middle};
+    public enum RoomType {Side, Corner, Middle, Starts};
     public RoomType roomType;
 
 
@@ -29,6 +28,10 @@ public class LayoutRoomGenerator : MonoBehaviour
         else if (roomType == RoomType.Middle)
         {
             Instantiate(rlp.middles[Random.Range(0, rlp.middles.Length)], transform);
+        }
+        else if(roomType == RoomType.Starts)
+        {
+            Instantiate(rlp.starts[Random.Range(0, rlp.starts.Length)], transform);
         }
     }
 
