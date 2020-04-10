@@ -47,14 +47,13 @@ public class CubeBoyBehavior : MonoBehaviour
         currentState = State.patrol;
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        agent.enabled = true;
     }
     private void Update()
     {
-        CalculatedDistances();
         StateChange();
         Patrolling();
         ChasePlayer();
+        CalculatedDistances();
     }
 
     private void Patrolling()
@@ -109,7 +108,6 @@ public class CubeBoyBehavior : MonoBehaviour
         {
             currentState = State.chasing;
         }
-        
     }
 
     private void OnTriggerEnter(Collider other)

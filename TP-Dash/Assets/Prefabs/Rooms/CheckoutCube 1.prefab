@@ -632,8 +632,8 @@ Transform:
   - {fileID: 8821050410417450734}
   - {fileID: 3769535893968468825}
   - {fileID: 2247382499761348985}
-  - {fileID: 836955287257639897}
   - {fileID: 6371807003254052246}
+  - {fileID: 836955287257639897}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1328,7 +1328,7 @@ Transform:
   - {fileID: 5874190944862423794}
   - {fileID: 2628897707574133990}
   m_Father: {fileID: 4333773389519069421}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7298051119589806476
 GameObject:
@@ -3002,10 +3002,20 @@ PrefabInstance:
       propertyPath: m_WalkableMask
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 7455398813335486650, guid: 1876b9bfc369f0844a3db95b901720cc,
+        type: 3}
+      propertyPath: m_AutoBraking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7455398813335486650, guid: 1876b9bfc369f0844a3db95b901720cc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7455398813335486651, guid: 1876b9bfc369f0844a3db95b901720cc,
         type: 3}
       propertyPath: m_IsKinematic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7455398813335486655, guid: 1876b9bfc369f0844a3db95b901720cc,
         type: 3}
@@ -3045,7 +3055,7 @@ PrefabInstance:
     - target: {fileID: 7455398813335486655, guid: 1876b9bfc369f0844a3db95b901720cc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7455398813335486655, guid: 1876b9bfc369f0844a3db95b901720cc,
         type: 3}
