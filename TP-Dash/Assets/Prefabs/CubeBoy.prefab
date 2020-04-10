@@ -104,7 +104,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7455398813335486648}
-  m_Enabled: 0
+  m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1
   m_Speed: 50
@@ -154,9 +154,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   patrollingSpeed: 10.5
-  spottedDistance: 31
-  chaseDistance: 167
-  chaseSpeed: 36
+  spottedDistance: 18
+  chaseDistance: 52
+  chaseSpeed: 20
 --- !u!65 &7455398813335486649
 BoxCollider:
   m_ObjectHideFlags: 0
