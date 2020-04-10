@@ -37,6 +37,9 @@ public class CubeBoyBehavior : MonoBehaviour
     private float distanceToPlayer;
     private float distanceFromWaypoint;
 
+    // Animations
+    private Animator anim;
+
 
 
 
@@ -47,6 +50,7 @@ public class CubeBoyBehavior : MonoBehaviour
         currentState = State.patrol;
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        anim = GetComponent<Animator>();
     }
     private void Update()
     {
@@ -54,6 +58,7 @@ public class CubeBoyBehavior : MonoBehaviour
         StateChange();
         Patrolling();
         ChasePlayer();
+        UpdateAnimations();
     }
 
     private void Patrolling()
@@ -120,6 +125,11 @@ public class CubeBoyBehavior : MonoBehaviour
                 currentState = State.patrol;
             }
         }
+    }
+
+    private void UpdateAnimations()
+    {
+        anim.SetFloat("Speed", agent.speed);
     }
 
   
