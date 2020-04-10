@@ -2992,6 +2992,21 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7455398813335486649, guid: 1876b9bfc369f0844a3db95b901720cc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7455398813335486650, guid: 1876b9bfc369f0844a3db95b901720cc,
+        type: 3}
+      propertyPath: m_WalkableMask
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 7455398813335486651, guid: 1876b9bfc369f0844a3db95b901720cc,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7455398813335486655, guid: 1876b9bfc369f0844a3db95b901720cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3000,7 +3015,7 @@ PrefabInstance:
     - target: {fileID: 7455398813335486655, guid: 1876b9bfc369f0844a3db95b901720cc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.38
+      value: 5.29
       objectReference: {fileID: 0}
     - target: {fileID: 7455398813335486655, guid: 1876b9bfc369f0844a3db95b901720cc,
         type: 3}

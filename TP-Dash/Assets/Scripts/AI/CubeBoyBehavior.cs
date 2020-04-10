@@ -47,6 +47,7 @@ public class CubeBoyBehavior : MonoBehaviour
         currentState = State.patrol;
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        agent.enabled = true;
     }
     private void Update()
     {
