@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager gm;
+
+    private bool sceneLoaded = false;
 
     [Header("TP Tracking")]
     public int tpCollected;
@@ -20,15 +24,22 @@ public class GameManager : MonoBehaviour
     [Header("Checkout")]
     [Range(0, 5)]
     public float timeBetweenTpSold;
-    
-    
 
-    private void Start()
+    [Header("Room Tracking")]
+    public List<GameObject> roomsSpawned = new List<GameObject>();
+
+    private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-        StartWave();
-        BakeNavMesh();
-    }
+        if (gm != null && gm != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            gm = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    } // Singleton 
 
     private void StartWave()
     {
@@ -47,5 +58,18 @@ public class GameManager : MonoBehaviour
         GetComponent<NavMeshSurface>().BuildNavMesh();
     }
 
+    private void GenerateNewLevel()
+    {
 
+    }
+
+    private void Update()
+    {
+        if(!sceneLoaded && SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            sceneLoaded = true;
+            StartWave();
+            BakeNavMesh();
+        }
+    }
 }
