@@ -116,8 +116,8 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1
-  m_BaseOffset: 0
-  m_WalkableMask: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!54 &7455398813335486651
 Rigidbody:
@@ -154,9 +154,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   patrollingSpeed: 10.5
-  spottedDistance: 31
-  chaseDistance: 167
-  chaseSpeed: 36
+  spottedDistance: 18
+  chaseDistance: 52
+  chaseSpeed: 20
 --- !u!65 &7455398813335486649
 BoxCollider:
   m_ObjectHideFlags: 0

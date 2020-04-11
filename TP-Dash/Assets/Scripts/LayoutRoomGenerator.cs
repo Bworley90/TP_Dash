@@ -5,6 +5,7 @@ using UnityEngine;
 public class LayoutRoomGenerator : MonoBehaviour
 {
     private RoomLayoutPrefabs rlp;
+    private GameManager gm;
 
     public enum RoomType {Side, Corner, Middle, Starts};
     public RoomType roomType;
@@ -13,25 +14,31 @@ public class LayoutRoomGenerator : MonoBehaviour
     private void Awake()
     {
         rlp = GameObject.FindGameObjectWithTag("RoomLayout").GetComponent<RoomLayoutPrefabs>();
+        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
     public void ChooseARoom()
     {
+        GameObject room;
         if(roomType == RoomType.Side)
         {
-            Instantiate(rlp.sides[Random.Range(0, rlp.sides.Length)], transform);
+            room = Instantiate(rlp.sides[Random.Range(0, rlp.sides.Length)], transform);
+            gm.roomsSpawned.Add(room);
         }
         else if (roomType == RoomType.Corner)
         {
-            Instantiate(rlp.corners[Random.Range(0, rlp.corners.Length)], transform);
+            room = Instantiate(rlp.corners[Random.Range(0, rlp.corners.Length)], transform);
+            gm.roomsSpawned.Add(room);
         }
         else if (roomType == RoomType.Middle)
         {
-            Instantiate(rlp.middles[Random.Range(0, rlp.middles.Length)], transform);
+            room = Instantiate(rlp.middles[Random.Range(0, rlp.middles.Length)], transform);
+            gm.roomsSpawned.Add(room);
         }
         else if(roomType == RoomType.Starts)
         {
-            Instantiate(rlp.starts[Random.Range(0, rlp.starts.Length)], transform);
+            room = Instantiate(rlp.starts[Random.Range(0, rlp.starts.Length)], transform);
+            gm.roomsSpawned.Add(room);
         }
     }
 

@@ -37,6 +37,9 @@ public class CubeBoyBehavior : MonoBehaviour
     private float distanceToPlayer;
     private float distanceFromWaypoint;
 
+    // Animations
+    private Animator anim;
+
 
 
 
@@ -47,6 +50,7 @@ public class CubeBoyBehavior : MonoBehaviour
         currentState = State.patrol;
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        anim = GetComponent<Animator>();
     }
     private void Update()
     {
@@ -54,6 +58,7 @@ public class CubeBoyBehavior : MonoBehaviour
         StateChange();
         Patrolling();
         ChasePlayer();
+        UpdateAnimations();
     }
 
     private void Patrolling()
@@ -91,32 +96,43 @@ public class CubeBoyBehavior : MonoBehaviour
 
     private void CalculatedDistances()
     {
-        distanceFromWaypoint = Vector3.Distance(transform.position, waypoints[index].position);
+       distanceFromWaypoint = Vector3.Distance(transform.position, waypoints[index].position);
         distanceToPlayer = Vector3.Distance(transform.position, player.position);
-
     }
 
 
     private void StateChange()
     {
-        //Patrol
-        if(distanceToPlayer > spottedDistance)
+        if(currentState == State.patrol)
         {
-            currentState = State.patrol;
+            if(distanceToPlayer < spottedDistance)
+            {
+                currentState = State.chasing;
+            }
         }
-        else if(distanceToPlayer < spottedDistance && distanceFromWaypoint < chaseDistance)
+        if(currentState == State.chasing)
         {
-            currentState = State.chasing;
+            if(distanceFromWaypoint > chaseDistance)
+            {
+                currentState = State.returning;
+            }
         }
-        
+        if(currentState == State.returning)
+        {
+            agent.destination = waypoints[index].position;
+            if(distanceFromWaypoint < 1 )
+            {
+                currentState = State.patrol;
+            }
+        }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void UpdateAnimations()
     {
-        if(other.CompareTag("Player"))
-        {
-            // Do something to player
-        }
+        anim.SetFloat("Speed", agent.speed);
     }
+
+  
+
 
 }
