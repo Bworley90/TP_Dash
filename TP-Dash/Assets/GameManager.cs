@@ -60,6 +60,11 @@ public class GameManager : MonoBehaviour
 
     private void GenerateNewLevel()
     {
+        SceneManager.LoadScene(1); // Load Loading Screen;
+        roomsSpawned.Clear();
+        GetComponent<NavMeshSurface>().RemoveData();
+        ResetScores();
+        sceneLoaded = false;
 
     }
 
@@ -70,6 +75,16 @@ public class GameManager : MonoBehaviour
             sceneLoaded = true;
             StartWave();
             BakeNavMesh();
+            
         }
+        if (Input.GetButtonDown("Jump"))
+        {
+            GenerateNewLevel();
+        }
+    }
+
+    private void ResetScores()
+    {
+        numberOfTPCheckedOut = 0;
     }
 }
