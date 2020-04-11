@@ -9,11 +9,13 @@ public class CubeBoyBehavior : MonoBehaviour
     {
         patrol,
         chasing,
-        returning
+        returning,
+        caught
     }
 
-    public State currentState;
+    public State currentState = State.patrol;
     private Vector3 goalPosition;
+    private bool ready = false;
     public Transform[] waypoints;
     private int index;
     private NavMeshAgent agent;
@@ -47,18 +49,23 @@ public class CubeBoyBehavior : MonoBehaviour
     private void Start()
     {
         index = 0;
-        currentState = State.patrol;
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         anim = GetComponent<Animator>();
+        StartCoroutine(StartNav());
     }
     private void Update()
     {
         CalculatedDistances();
-        StateChange();
-        Patrolling();
-        ChasePlayer();
-        UpdateAnimations();
+
+        if (ready)
+        {
+            StateChange();
+            Patrolling();
+            ChasePlayer();
+            UpdateAnimations();
+        }
+        
     }
 
     private void Patrolling()
@@ -89,7 +96,7 @@ public class CubeBoyBehavior : MonoBehaviour
         {
             agent.destination = player.position;
             agent.speed = chaseSpeed;
-            //CheckOnTriggerEnter for actions when caught
+            //Check OnTriggerEnter for actions when caught
         }
     }
 
@@ -133,6 +140,11 @@ public class CubeBoyBehavior : MonoBehaviour
     }
 
   
-
+    private IEnumerator StartNav()
+    {
+        yield return new WaitForSeconds(.5f);
+        GetComponent<NavMeshAgent>().enabled = true;
+        ready = true;
+    }
 
 }
