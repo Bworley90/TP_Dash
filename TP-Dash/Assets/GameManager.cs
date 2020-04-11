@@ -86,5 +86,6 @@ public class GameManager : MonoBehaviour
     private void ResetScores()
     {
         numberOfTPCheckedOut = 0;
+        tpCollected = 0;
     }
 }

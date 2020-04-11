@@ -538,8 +538,8 @@ MonoBehaviour:
   currentState: 0
   waypoints: []
   patrollingSpeed: 15
-  spottedDistance: 1
-  chaseDistance: 60
+  spottedDistance: 30
+  chaseDistance: 160
   chaseSpeed: 35
 --- !u!195 &5297249541123415102
 NavMeshAgent:
