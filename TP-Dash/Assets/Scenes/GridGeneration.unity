@@ -198,7 +198,7 @@ MonoBehaviour:
   sides:
   - {fileID: 4333773389519069420, guid: 86379af690b5f3b418217a4d838c8923, type: 3}
   corners:
-  - {fileID: 4333773389519069420, guid: 4cd83d8228d5e8149854b080eba6e3bf, type: 3}
+  - {fileID: 4333773389519069420, guid: 1674fb3c9a5ae9f45a52c10c3b3c18b4, type: 3}
   - {fileID: 4333773389519069420, guid: 41f5a7ec3b77b264bb5850eb9e1e1352, type: 3}
   middles:
   - {fileID: 4333773389519069420, guid: 669e7a6ac76e3fe47ae790a0431e5c7d, type: 3}
