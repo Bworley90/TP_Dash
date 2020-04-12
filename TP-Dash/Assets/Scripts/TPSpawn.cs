@@ -4,31 +4,33 @@ using UnityEngine;
 
 public class TPSpawn : MonoBehaviour
 {
-    public List<Transform> tpSpawnPoints = new List<Transform>();
-    public GameObject tp;
-    private void Start()
-    {
-        SpawnTP(); 
-    }
-
-
-
+    [SerializeField]
+    Transform[] spawnPoints;
     public void SpawnTP()
     {
-        if(GameManager.gm.tpSpawned < GameManager.gm.tpTotal)
+        foreach(Transform point in spawnPoints)
         {
-            foreach (Transform spawn in tpSpawnPoints)
+            int rand = Random.Range(0, 6);
+            if(GameManager.gm.tpSpawned < GameManager.gm.tpTotal)
             {
-                float rand = Random.Range(1, 100);
-                if (rand <= 33)
+                if (rand <= 1)
                 {
-                    Instantiate(tp, spawn);
-                    GameManager.gm.tpSpawned++;
-                }
+                    try
+                    {
+                        Instantiate(GameManager.gm.tp, point);
+                        GameManager.gm.tpSpawned++;
+                    }
+                    catch
+                    {
+                        print("Error in Creating TP " + point.transform.name);
+                    }
 
+                }
             }
+            
+            
         }
-       
     }
+    
 
 }

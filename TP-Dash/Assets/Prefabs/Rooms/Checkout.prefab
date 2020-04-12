@@ -250,14 +250,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17858fef3d4ab3a4987c735c7d5d1083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tpSpawnPoints:
+  spawnPoints:
   - {fileID: 6097126820686859105}
   - {fileID: 4608340362578499451}
   - {fileID: 3173899399742516846}
   - {fileID: 1116471647911708419}
   - {fileID: 6978979094307387423}
   - {fileID: 521934674280322198}
-  tp: {fileID: 2885629692911775870, guid: d9c9aa8d7c2e66f4fb5d2c616b989ce2, type: 3}
 --- !u!1 &4333773390053074391
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,8 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17858fef3d4ab3a4987c735c7d5d1083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tpSpawnPoints: []
-  tp: {fileID: 0}
+  spawnPoints: []
 --- !u!1 &5372998873085505103
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,6 +1531,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cubeboy1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4225064135660684584, guid: a0fc1b2a604573148be227df66390e42,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5297249541123415101, guid: a0fc1b2a604573148be227df66390e42,
         type: 3}

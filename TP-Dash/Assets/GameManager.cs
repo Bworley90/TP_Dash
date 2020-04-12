@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
@@ -14,19 +15,27 @@ public class GameManager : MonoBehaviour
     public int tpCollected;
     public int tpTotal;
     public int tpSpawned;
-    [Range(1,100)]
-    [Tooltip("Percent to Spawn TP per node")]
     public int difficulty;
     public GameObject tp;
     public int numberOfTPCheckedOut;
-    public List<GameObject> roomsSpawnPoints = new List<GameObject>();
 
     [Header("Checkout")]
     [Range(0, 5)]
     public float timeBetweenTpSold;
 
     [Header("Room Tracking")]
-    public List<GameObject> roomsSpawned = new List<GameObject>();
+    public List<GameObject> roomsCreated = new List<GameObject>();
+
+
+    // Leavers
+    List<GameObject> roomsSpawnPoints = new List<GameObject>();
+
+
+
+
+    // New 
+
+    public List<GameObject> roomGenerators = new List<GameObject>();
 
     private void Awake()
     {
@@ -48,32 +57,16 @@ public class GameManager : MonoBehaviour
         {
             if(rg.GetComponent<LayoutRoomGenerator>() != null)
             {
-                rg.GetComponent<LayoutRoomGenerator>().ChooseARoom();
+                rg.GetComponent<LayoutRoomGenerator>().CreateRoom();  
             }
         }
-        foreach (GameObject tpSpawns in roomsSpawnPoints)
-        {
-            if(GetComponent<TPSpawn>() != null)
-            {
-                tpSpawns.GetComponent<TPSpawn>().SpawnTP();
-            }
-            else
-            {
-                print(tpSpawns.transform.name + " does not have a TP Spawn on the prefab");
-            }
-        }
+        
 
     }
-
-    public void BakeNavMesh()
-    {
-        GetComponent<NavMeshSurface>().BuildNavMesh();
-    }
-
     private void GenerateNewLevel()
     {
         SceneManager.LoadScene(1); // Load Loading Screen;
-        roomsSpawned.Clear(); // ClearOut Room Prefabs
+        roomsCreated.Clear(); // ClearOut Room Prefabs
         roomsSpawnPoints.Clear(); // Removing Prefabs list
         GetComponent<NavMeshSurface>().RemoveData();
         ResetScores();
@@ -86,13 +79,11 @@ public class GameManager : MonoBehaviour
         if(!sceneLoaded && SceneManager.GetActiveScene().buildIndex == 2)
         {
             sceneLoaded = true;
-            StartWave();
-            BakeNavMesh();
-            
+            LevelGeneration();
         }
         if (Input.GetButtonDown("Jump"))
         {
-            GenerateNewLevel();
+            LevelGeneration();
         }
     }
 
@@ -100,5 +91,87 @@ public class GameManager : MonoBehaviour
     {
         numberOfTPCheckedOut = 0;
         tpCollected = 0;
+        difficulty = 1;
+    }
+
+
+    private void LevelGeneration()
+    {
+        ResetScores(); // Reset Varibles for TP
+
+        ClearList(roomsCreated, true); // Delete all prefabs of rooms;
+
+        ClearList(roomGenerators, false); ; // Deletes all spawnpoints
+
+        GetComponent<NavMeshSurface>().RemoveData();// Remove old NavMesh
+
+        roomGenerators.AddRange(GameObject.FindGameObjectsWithTag("SpawnPoint"));  // Gather all spawnpoints
+
+        SpawnRoomPrefab();// Spawns the rooms on the main spawn points
+
+        GetComponent<NavMeshSurface>().BuildNavMesh(); // Bake a navmesh to created rooms
+
+        // LayoutRoomGenerator is giving back this list of prefab room names
+        // Take these and check for a script to spawn TP in that room
+        RandomizeTPInPrefabs();
+    }
+
+    private void SpawnRoomPrefab()
+    {
+        foreach (GameObject spawnpoint in roomGenerators) // Spawn the rooms from the LayoutRoomGenerator function CreateRoom
+        {
+            try
+            {
+                spawnpoint.GetComponentInChildren<LayoutRoomGenerator>().CreateRoom(); // Spawn a room at the spawnpoint
+            }
+            catch
+            {
+                print(spawnpoint.transform.name + " Is missing a LayoutRoomGenerator Script"); // Check for missing script
+            }
+        }
+    }
+
+    private void RandomizeTPInPrefabs()
+    {
+        while (tpSpawned < tpTotal)
+        {
+            foreach (GameObject room in roomsCreated)
+            {
+                if (tpSpawned < tpTotal)
+                {
+                    try
+                    {
+                        room.GetComponent<TPSpawn>().SpawnTP();
+                    }
+                    catch
+                    {
+                        print(room.transform.name + " is missing the TP spawn script");
+                    }
+                }
+
+            }
+        }
+
+    }
+
+    private void ClearList(List<GameObject> listToClear, bool destroyObject)
+    {
+        if(destroyObject)
+        {
+            foreach (GameObject game in listToClear)
+            {
+                Destroy(game);
+            }
+            listToClear.Clear();
+            listToClear.TrimExcess();
+            listToClear.Capacity = 0;
+        }
+        else
+        {
+            listToClear.Clear();
+            listToClear.TrimExcess();
+            listToClear.Capacity = 0;
+        }
+        
     }
 }

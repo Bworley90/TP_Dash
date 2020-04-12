@@ -50,16 +50,14 @@ public class CubeBoyBehavior : MonoBehaviour
     {
         index = 0;
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
         anim = GetComponent<Animator>();
         StartCoroutine(StartNav());
     }
     private void Update()
     {
-        CalculatedDistances();
-
         if (ready)
         {
+            CalculatedDistances();
             StateChange();
             Patrolling();
             ChasePlayer();
@@ -144,6 +142,7 @@ public class CubeBoyBehavior : MonoBehaviour
     {
         yield return new WaitForSeconds(.5f);
         GetComponent<NavMeshAgent>().enabled = true;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         ready = true;
     }
 
