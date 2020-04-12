@@ -4,38 +4,31 @@ using UnityEngine;
 
 public class TPSpawn : MonoBehaviour
 {
-    private GameManager gm;
-    private float spawnChancePercentage;
-
+    public List<Transform> tpSpawnPoints = new List<Transform>();
+    public GameObject tp;
     private void Start()
     {
-        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-        spawnChancePercentage = gm.difficulty;
         SpawnTP(); 
     }
 
 
 
-    private void SpawnTP()
+    public void SpawnTP()
     {
-        if(gm.tpSpawned < gm.tpTotal)
+        if(GameManager.gm.tpSpawned < GameManager.gm.tpTotal)
         {
-            for (int i = 0; i < transform.childCount; i++)
+            foreach (Transform spawn in tpSpawnPoints)
             {
-                int randomNumber = Random.Range(0, 100);
-                if (randomNumber < spawnChancePercentage)
+                float rand = Random.Range(1, 100);
+                if (rand <= 33)
                 {
-                    Instantiate(gm.tp, transform.GetChild(i).transform);
-                    gm.tpSpawned++;
+                    Instantiate(tp, spawn);
+                    GameManager.gm.tpSpawned++;
                 }
+
             }
         }
-        
+       
     }
 
-
-    public void SpawnRandomTPinPrefab()
-    {
-        Transform[] spawnPoints = GetComponentsInChildren<Transform>();// left here
-    }
 }

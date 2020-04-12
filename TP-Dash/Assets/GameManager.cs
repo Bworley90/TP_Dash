@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public int difficulty;
     public GameObject tp;
     public int numberOfTPCheckedOut;
-    public GameObject[] spawnPoints;
+    public List<GameObject> roomsSpawnPoints = new List<GameObject>();
 
     [Header("Checkout")]
     [Range(0, 5)]
@@ -43,14 +43,26 @@ public class GameManager : MonoBehaviour
 
     private void StartWave()
     {
-        spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
-        foreach(GameObject rg in spawnPoints)
+        roomsSpawnPoints.AddRange(GameObject.FindGameObjectsWithTag("SpawnPoint"));
+        foreach(GameObject rg in roomsSpawnPoints)
         {
             if(rg.GetComponent<LayoutRoomGenerator>() != null)
             {
                 rg.GetComponent<LayoutRoomGenerator>().ChooseARoom();
             }
         }
+        foreach (GameObject tpSpawns in roomsSpawnPoints)
+        {
+            if(GetComponent<TPSpawn>() != null)
+            {
+                tpSpawns.GetComponent<TPSpawn>().SpawnTP();
+            }
+            else
+            {
+                print(tpSpawns.transform.name + " does not have a TP Spawn on the prefab");
+            }
+        }
+
     }
 
     public void BakeNavMesh()
@@ -61,7 +73,8 @@ public class GameManager : MonoBehaviour
     private void GenerateNewLevel()
     {
         SceneManager.LoadScene(1); // Load Loading Screen;
-        roomsSpawned.Clear();
+        roomsSpawned.Clear(); // ClearOut Room Prefabs
+        roomsSpawnPoints.Clear(); // Removing Prefabs list
         GetComponent<NavMeshSurface>().RemoveData();
         ResetScores();
         sceneLoaded = false;
