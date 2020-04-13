@@ -16,11 +16,12 @@ public class GameManager : MonoBehaviour
         waveComplete,
         gameOver,
         mainMenu,
-        tutorial
+        loading
     }
 
     public GameState gameState;
 
+    private bool levelLoaded = false;
 
     [Header("TP Tracking")]
     public int tpCollected;
@@ -46,6 +47,8 @@ public class GameManager : MonoBehaviour
 
     //UI
     private Animator UIanim;
+    private float startingTimer = 5;
+    public bool doneLoading;
 
 
     private void Awake()
@@ -65,16 +68,20 @@ public class GameManager : MonoBehaviour
     {
         if (gameState == GameState.mainMenu)
         {
-            
+            ResetScores();
         }
 
-        else if (gameState == GameState.tutorial)
+        else if (gameState == GameState.loading)
         {
-            //UIanim do something
+            if(doneLoading)
+            {
+                gameState = GameState.waitingToStart;
+            }
         }
         else if (gameState == GameState.waitingToStart)
         {
             LevelGeneration();
+            TimeToStart();
         }
         else if(gameState == GameState.started)
         {
@@ -96,35 +103,42 @@ public class GameManager : MonoBehaviour
         
     }
 
-    private void ResetScores()
+    public void ResetScores()
     {
         numberOfTPCheckedOut = 0;
         tpCollected = 0;
         difficulty = 1;
         timeleft = maxTime;
+        levelLoaded = false;
+        startingTimer = 5;
+        doneLoading = false;
     }
 
 
     private void LevelGeneration()
     {
-        ResetScores(); // Reset Varibles for TP
+        if(!levelLoaded)
+        {
+            ResetScores(); // Reset Varibles for TP
 
-        ClearList(roomsCreated, true); // Delete all prefabs of rooms;
+            ClearList(roomsCreated, true); // Delete all prefabs of rooms;
 
-        ClearList(roomGenerators, false); ; // Deletes all spawnpoints
+            ClearList(roomGenerators, false); ; // Deletes all spawnpoints
 
-        GetComponent<NavMeshSurface>().RemoveData();// Remove old NavMesh
+            GetComponent<NavMeshSurface>().RemoveData();// Remove old NavMesh
 
-        roomGenerators.AddRange(GameObject.FindGameObjectsWithTag("SpawnPoint"));  // Gather all spawnpoints
+            roomGenerators.AddRange(GameObject.FindGameObjectsWithTag("SpawnPoint"));  // Gather all spawnpoints
 
-        SpawnRoomPrefab();// Spawns the rooms on the main spawn points
+            SpawnRoomPrefab();// Spawns the rooms on the main spawn points
 
-        GetComponent<NavMeshSurface>().BuildNavMesh(); // Bake a navmesh to created rooms
+            GetComponent<NavMeshSurface>().BuildNavMesh(); // Bake a navmesh to created rooms
 
-        // LayoutRoomGenerator is giving back this list of prefab room names
-        // Take these and check for a script to spawn TP in that room
-        RandomizeTPInPrefabs();
-        gameState = GameState.started;
+            // LayoutRoomGenerator is giving back this list of prefab room names
+            // Take these and check for a script to spawn TP in that room
+            RandomizeTPInPrefabs();
+            levelLoaded = true;
+        }
+        
     }
 
     private void SpawnRoomPrefab()
@@ -192,6 +206,21 @@ public class GameManager : MonoBehaviour
         if(timeleft <= 0)
         {
             gameState = GameState.gameOver;
+        }
+    }
+
+    private void TimeToStart()
+    {
+        GameObject gameUI = GameObject.FindGameObjectWithTag("InGameUI");
+        gameUI.GetComponent<InGameButtons>().countdownText.enabled = true;
+        startingTimer -= Time.deltaTime * 1;
+        gameUI.GetComponent<InGameButtons>().countdownText.text = 
+            Mathf.RoundToInt(startingTimer).ToString(); // Update UI
+        if(startingTimer <= 0)
+        {
+            gameState = GameState.started;
+            gameUI.GetComponent<InGameButtons>().countdownText.enabled = false;
+
         }
     }
 

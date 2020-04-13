@@ -8,6 +8,7 @@ public class MainMenuButtons : MonoBehaviour
     public void GoToNewScene(int sceneNumber)
     {
         SceneManager.LoadScene(sceneNumber);
+        GameManager.gm.gameState = GameManager.GameState.loading;
     }
 
     public void OptionsButton()

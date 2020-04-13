@@ -6,49 +6,33 @@ using UnityEngine.SceneManagement;
 
 public class LoadingScene : MonoBehaviour
 {
-    private bool loadingScene = false;
-
-    [SerializeField]
-    private int sceneNumber;
-    [SerializeField]
-    private Text loadingText;
-    AsyncOperation async;
-    [SerializeField]
-    Button okButton;
-
+    public Button okButton;
+    public Text okButtonText;
+    private bool ready = false;
 
     private void Update()
     {
-        if(!loadingScene)
+        if(!ready)
         {
-            loadingScene = true;
-            loadingText.text = "Loading...";
-            StartCoroutine(LoadNewScene());
+            okButton.interactable = false;
+            okButtonText.text = "Loading..";
+            StartCoroutine(FakeLoad());
         }
-        if(loadingScene)
+        else
         {
-            if(!async.isDone)
-            {
-                okButton.interactable = false;
-                loadingText.text = "Loading";
-            }
-            else
-            {
-                okButton.interactable = true;
-                loadingText.text = "Ok, Got it!";
-            }
+            SceneManager.LoadScene(2);
+            GameManager.gm.gameState = GameManager.GameState.waitingToStart;
         }
     }
 
-    IEnumerator LoadNewScene()
+    IEnumerator FakeLoad()
     {
-        async = SceneManager.LoadSceneAsync(sceneNumber);
-
-        while(!async.isDone)
-        {
-            yield return null;
-        }
+        yield return new WaitForSeconds(4f);
+        ready = true;
     }
+
 
 
 }
+
+

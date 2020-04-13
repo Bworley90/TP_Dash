@@ -2,20 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class InGameButtons : MonoBehaviour
 {
+    public Text countdownText;
     public void Retry()
     {
         GetComponent<Animator>().SetBool("gameOver", false);
         GameManager.gm.gameState = GameManager.GameState.waitingToStart;
-        GetComponent<Animator>().SetTrigger("backToStart");
+        GameManager.gm.ResetScores();
     }
 
     public void Quit()
     {
-        SceneManager.LoadScene(0);
         GameManager.gm.gameState = GameManager.GameState.mainMenu;
+        SceneManager.LoadScene(0);
+        GameManager.gm.ResetScores();
+        
 
     }
 }
