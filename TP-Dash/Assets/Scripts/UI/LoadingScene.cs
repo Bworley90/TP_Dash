@@ -12,6 +12,9 @@ public class LoadingScene : MonoBehaviour
     private int sceneNumber;
     [SerializeField]
     private Text loadingText;
+    AsyncOperation async;
+    [SerializeField]
+    Button okButton;
 
 
     private void Update()
@@ -22,17 +25,24 @@ public class LoadingScene : MonoBehaviour
             loadingText.text = "Loading...";
             StartCoroutine(LoadNewScene());
         }
-
         if(loadingScene)
         {
-            loadingText.color = new Color(loadingText.color.r, loadingText.color.g, loadingText.color.b, Mathf.PingPong(Time.time, 1));
+            if(!async.isDone)
+            {
+                okButton.interactable = false;
+                loadingText.text = "Loading";
+            }
+            else
+            {
+                okButton.interactable = true;
+                loadingText.text = "Ok, Got it!";
+            }
         }
     }
 
     IEnumerator LoadNewScene()
     {
-        yield return new WaitForSeconds(3f);
-        AsyncOperation async = SceneManager.LoadSceneAsync(sceneNumber);
+        async = SceneManager.LoadSceneAsync(sceneNumber);
 
         while(!async.isDone)
         {

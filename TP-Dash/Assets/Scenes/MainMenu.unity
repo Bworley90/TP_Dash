@@ -844,15 +844,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b590457bddc8ee4b98ad7857ea840d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameState: 4
   tpCollected: 0
   tpTotal: 10
   tpSpawned: 0
-  difficulty: 100
+  difficulty: 1
   tp: {fileID: 2885629692911775870, guid: d9c9aa8d7c2e66f4fb5d2c616b989ce2, type: 3}
   numberOfTPCheckedOut: 0
-  spawnPoints: []
-  timeBetweenTpSold: 1
-  roomsSpawned: []
+  timeleft: 0
+  maxTime: 10
+  timerText: {fileID: 0}
+  timeBetweenTpSold: 0.5
+  roomsCreated: []
+  roomGenerators: []
 --- !u!4 &1253563714
 Transform:
   m_ObjectHideFlags: 0

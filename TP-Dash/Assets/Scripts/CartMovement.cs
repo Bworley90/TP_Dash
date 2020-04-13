@@ -17,29 +17,33 @@ public class CartMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(Input.GetAxisRaw("Vertical") > 0)// Moving Forward
+        if(GameManager.gm.gameState == GameManager.GameState.started)
         {
-            Vector3 newPosition = rb.position + transform.TransformDirection(Vector3.right * speed * Time.deltaTime);
-            rb.MovePosition(newPosition);
-        }
-        else if(Input.GetAxisRaw("Vertical") < 0)
-        {
-            Vector3 newPosition = rb.position + transform.TransformDirection(Vector3.left * speed * Time.deltaTime);
-            rb.MovePosition(newPosition);
-        }
-        if(Input.GetAxisRaw("Horizontal") > 0)
-        {
-            transform.Rotate(0, turnSpeed, 0);
-        }
-        else if (Input.GetAxisRaw("Horizontal") < 0)
-        {
-            transform.Rotate(0, -1 * turnSpeed, 0);
-        }
+            if (Input.GetAxisRaw("Vertical") > 0)// Moving Forward
+            {
+                Vector3 newPosition = rb.position + transform.TransformDirection(Vector3.right * speed * Time.deltaTime);
+                rb.MovePosition(newPosition);
+            }
+            else if (Input.GetAxisRaw("Vertical") < 0)
+            {
+                Vector3 newPosition = rb.position + transform.TransformDirection(Vector3.left * speed * Time.deltaTime);
+                rb.MovePosition(newPosition);
+            }
+            if (Input.GetAxisRaw("Horizontal") > 0)
+            {
+                transform.Rotate(0, turnSpeed, 0);
+            }
+            else if (Input.GetAxisRaw("Horizontal") < 0)
+            {
+                transform.Rotate(0, -1 * turnSpeed, 0);
+            }
 
-        if(Input.GetAxisRaw("Vertical") == 0 && Input.GetAxisRaw("Horizontal") == 0)
-        {
-            rb.velocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
+            if (Input.GetAxisRaw("Vertical") == 0 && Input.GetAxisRaw("Horizontal") == 0)
+            {
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+            }
         }
     }
+        
 }

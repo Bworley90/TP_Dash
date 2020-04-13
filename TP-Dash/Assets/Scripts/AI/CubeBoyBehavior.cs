@@ -10,7 +10,8 @@ public class CubeBoyBehavior : MonoBehaviour
         patrol,
         chasing,
         returning,
-        caught
+        caught, 
+        paused
     }
 
     public State currentState = State.patrol;
@@ -129,6 +130,11 @@ public class CubeBoyBehavior : MonoBehaviour
             {
                 currentState = State.patrol;
             }
+        }
+        if(GameManager.gm.gameState == GameManager.GameState.gameOver)
+        {
+            currentState = State.paused;
+            agent.destination = transform.position;
         }
     }
 

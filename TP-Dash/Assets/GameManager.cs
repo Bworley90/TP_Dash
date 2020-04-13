@@ -14,7 +14,9 @@ public class GameManager : MonoBehaviour
         waitingToStart,
         started,
         waveComplete,
-        gameOver
+        gameOver,
+        mainMenu,
+        tutorial
     }
 
     public GameState gameState;
@@ -41,6 +43,11 @@ public class GameManager : MonoBehaviour
     public List<GameObject> roomsCreated = new List<GameObject>();
     public List<GameObject> roomGenerators = new List<GameObject>();
 
+
+    //UI
+    private Animator UIanim;
+
+
     private void Awake()
     {
         if (gm != null && gm != this)
@@ -56,13 +63,26 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(gameState == GameState.waitingToStart)
+        if (gameState == GameState.mainMenu)
+        {
+            
+        }
+
+        else if (gameState == GameState.tutorial)
+        {
+            //UIanim do something
+        }
+        else if (gameState == GameState.waitingToStart)
         {
             LevelGeneration();
         }
         else if(gameState == GameState.started)
         {
             TimeCountdown();
+            if (SceneManager.GetActiveScene().buildIndex == 0)
+            {
+                gameState = GameState.mainMenu;
+            }
         }
         else if (gameState == GameState.waveComplete)
         {
@@ -70,8 +90,10 @@ public class GameManager : MonoBehaviour
         }
         else if (gameState == GameState.gameOver)
         {
-
+            GameOver();
         }
+        
+        
     }
 
     private void ResetScores()
@@ -170,6 +192,16 @@ public class GameManager : MonoBehaviour
         if(timeleft <= 0)
         {
             gameState = GameState.gameOver;
+        }
+    }
+
+    private void GameOver()
+    {
+        if(gameState == GameState.gameOver)
+        {
+            UIanim = GameObject.FindGameObjectWithTag("InGameUI").GetComponent<Animator>();
+            UIanim.SetBool("gameOver", true);
+
         }
     }
 
