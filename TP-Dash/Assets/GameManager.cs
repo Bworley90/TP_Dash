@@ -1,15 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager gm;
 
-    private bool sceneLoaded = false;
+    public enum GameState
+    {
+        waitingToStart,
+        started,
+        waveComplete,
+        gameOver
+    }
+
+    public GameState gameState;
+
 
     [Header("TP Tracking")]
     public int tpCollected;
@@ -19,22 +28,17 @@ public class GameManager : MonoBehaviour
     public GameObject tp;
     public int numberOfTPCheckedOut;
 
+    [Header("Time")]
+    public float timeleft;
+    public int maxTime;
+    public Text timerText;
+
     [Header("Checkout")]
     [Range(0, 5)]
     public float timeBetweenTpSold;
 
     [Header("Room Tracking")]
     public List<GameObject> roomsCreated = new List<GameObject>();
-
-
-    // Leavers
-    List<GameObject> roomsSpawnPoints = new List<GameObject>();
-
-
-
-
-    // New 
-
     public List<GameObject> roomGenerators = new List<GameObject>();
 
     private void Awake()
@@ -50,40 +54,23 @@ public class GameManager : MonoBehaviour
         }
     } // Singleton 
 
-    private void StartWave()
-    {
-        roomsSpawnPoints.AddRange(GameObject.FindGameObjectsWithTag("SpawnPoint"));
-        foreach(GameObject rg in roomsSpawnPoints)
-        {
-            if(rg.GetComponent<LayoutRoomGenerator>() != null)
-            {
-                rg.GetComponent<LayoutRoomGenerator>().CreateRoom();  
-            }
-        }
-        
-
-    }
-    private void GenerateNewLevel()
-    {
-        SceneManager.LoadScene(1); // Load Loading Screen;
-        roomsCreated.Clear(); // ClearOut Room Prefabs
-        roomsSpawnPoints.Clear(); // Removing Prefabs list
-        GetComponent<NavMeshSurface>().RemoveData();
-        ResetScores();
-        sceneLoaded = false;
-
-    }
-
     private void Update()
     {
-        if(!sceneLoaded && SceneManager.GetActiveScene().buildIndex == 2)
+        if(gameState == GameState.waitingToStart)
         {
-            sceneLoaded = true;
             LevelGeneration();
         }
-        if (Input.GetButtonDown("Jump"))
+        else if(gameState == GameState.started)
         {
-            LevelGeneration();
+            TimeCountdown();
+        }
+        else if (gameState == GameState.waveComplete)
+        {
+
+        }
+        else if (gameState == GameState.gameOver)
+        {
+
         }
     }
 
@@ -92,6 +79,7 @@ public class GameManager : MonoBehaviour
         numberOfTPCheckedOut = 0;
         tpCollected = 0;
         difficulty = 1;
+        timeleft = maxTime;
     }
 
 
@@ -114,6 +102,7 @@ public class GameManager : MonoBehaviour
         // LayoutRoomGenerator is giving back this list of prefab room names
         // Take these and check for a script to spawn TP in that room
         RandomizeTPInPrefabs();
+        gameState = GameState.started;
     }
 
     private void SpawnRoomPrefab()
@@ -174,4 +163,14 @@ public class GameManager : MonoBehaviour
         }
         
     }
+
+    private void TimeCountdown()
+    {
+        timeleft -= Time.deltaTime * 1;
+        if(timeleft <= 0)
+        {
+            gameState = GameState.gameOver;
+        }
+    }
+
 }
