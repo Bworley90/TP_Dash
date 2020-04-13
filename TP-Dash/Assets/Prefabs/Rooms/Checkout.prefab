@@ -2472,6 +2472,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cart
       objectReference: {fileID: 0}
+    - target: {fileID: 6893549734719802635, guid: 932027a05cb0b8840a881369a781ba02,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7634049063517732632, guid: 932027a05cb0b8840a881369a781ba02,
         type: 3}
       propertyPath: m_LocalPosition.x
