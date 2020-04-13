@@ -11,7 +11,10 @@ GameObject:
   - component: {fileID: 7606926247250839727}
   - component: {fileID: 1498077588981314201}
   - component: {fileID: 5185530800740732512}
-  - component: {fileID: 90994374128421623}
+  - component: {fileID: 4519190970795203830}
+  - component: {fileID: 8323700653275293122}
+  - component: {fileID: 4255504754368310898}
+  - component: {fileID: 8266708121756806587}
   m_Layer: 0
   m_Name: small mower
   m_TagString: Untagged
@@ -84,7 +87,45 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!95 &90994374128421623
+--- !u!65 &4519190970795203830
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6902437984401734332}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.253975, y: 7.446623, z: 9.313218}
+  m_Center: {x: -0.00000011920929, y: 3.8650527, z: -1.2635094}
+--- !u!65 &8323700653275293122
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6902437984401734332}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 13.346876, y: 7.4466224, z: 15.64646}
+  m_Center: {x: 0.38373184, y: 3.8650527, z: -0.77336633}
+--- !u!114 &4255504754368310898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6902437984401734332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a9042d26818283458ecd12e4342f612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &8266708121756806587
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -114,6 +155,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SmokeParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 3285608411613728053, guid: f415e46b2ac9dd846a042443f9d44014,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3285608411613728054, guid: f415e46b2ac9dd846a042443f9d44014,
         type: 3}
