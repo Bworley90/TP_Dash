@@ -48,7 +48,6 @@ public class GameManager : MonoBehaviour
     //UI
     private Animator UIanim;
     private float startingTimer = 5;
-    public bool doneLoading;
 
 
     private void Awake()
@@ -73,10 +72,7 @@ public class GameManager : MonoBehaviour
 
         else if (gameState == GameState.loading)
         {
-            if(doneLoading)
-            {
-                gameState = GameState.waitingToStart;
-            }
+
         }
         else if (gameState == GameState.waitingToStart)
         {
@@ -111,7 +107,7 @@ public class GameManager : MonoBehaviour
         timeleft = maxTime;
         levelLoaded = false;
         startingTimer = 5;
-        doneLoading = false;
+        tpSpawned = 0;
     }
 
 
@@ -232,6 +228,21 @@ public class GameManager : MonoBehaviour
             UIanim.SetBool("gameOver", true);
 
         }
+    }
+
+    public void LoadSceneAsync()
+    {
+        StartCoroutine(LoadScene());
+    }
+
+    IEnumerator LoadScene()
+    {
+        AsyncOperation async = SceneManager.LoadSceneAsync(2);
+        while(!async.isDone)
+        {
+            yield return null;
+        }
+        gameState = GameState.waitingToStart;
     }
 
 }
