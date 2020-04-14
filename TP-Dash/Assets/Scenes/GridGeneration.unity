@@ -559,7 +559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   startCountdownTimerText: {fileID: 1226323246}
-  startCountdownLength: 5
+  startCountdownLength: 6
   tpCollected: 0
   tpTotal: 10
   tpSpawned: 0
@@ -567,7 +567,7 @@ MonoBehaviour:
   tp: {fileID: 2885629692911775870, guid: d9c9aa8d7c2e66f4fb5d2c616b989ce2, type: 3}
   numberOfTPCheckedOut: 0
   timeleft: 0
-  maxTime: 15
+  maxTime: 3
   timerText: {fileID: 1355634911}
   timeBetweenTpSold: 0.35
   prefabRooms: []
@@ -2156,7 +2156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc594570b7b27744cbe6446556e47d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdownText: {fileID: 1226323248}
 --- !u!4 &1287659325 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 7c25638e97caf974c8ff85761e304aa1,

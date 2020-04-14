@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
         uIanim = GameObject.FindGameObjectWithTag("InGameUI").GetComponent<Animator>();
         print("Test");
         gm = this;
+        timeleft = maxTime;
     }
 
     private void Update()
@@ -79,45 +80,16 @@ public class GameManager : MonoBehaviour
         {
             GenerateWorld();
         }
-
-    }
-
-    public void ResetScores()
-    {
-        numberOfTPCheckedOut = 0;
-        tpCollected = 0;
-        difficulty = 1;
-        timeleft = maxTime;
-        levelLoaded = false;
-        tpSpawned = 0;
-    }
-
-
-    private void LevelGeneration()
-    {
-        if(!levelLoaded)
+        else if(state == State.gameStarted)
         {
-            ResetScores(); // Reset Varibles for TP
-
-            //ClearList(roomsCreated, true); // Delete all prefabs of rooms;
-
-            //ClearList(roomGenerators, false); ; // Deletes all spawnpoints
-
-            //GetComponent<NavMeshSurface>().RemoveData();// Remove old NavMesh
-
-            //roomGenerators.AddRange(GameObject.FindGameObjectsWithTag("SpawnPoint"));  // Gather all spawnpoints
-
-            //SpawnRoomPrefab();// Spawns the rooms on the main spawn points
-
-            //GetComponent<NavMeshSurface>().BuildNavMesh(); // Bake a navmesh to created rooms
-
-            // LayoutRoomGenerator is giving back this list of prefab room names
-            // Take these and check for a script to spawn TP in that room
-            //RandomizeTPInPrefabs();
-            //levelLoaded = true;
+            LevelDuration();
         }
-        
+
     }
+
+
+
+    
 
     private void SpawnRoomPrefab()
     {
@@ -157,28 +129,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void ClearList(List<GameObject> listToClear, bool destroyObject)
-    {
-        if(destroyObject)
-        {
-            foreach (GameObject game in listToClear)
-            {
-                Destroy(game);
-            }
-            listToClear.Clear();
-            listToClear.TrimExcess();
-            listToClear.Capacity = 0;
-        }
-        else
-        {
-            listToClear.Clear();
-            listToClear.TrimExcess();
-            listToClear.Capacity = 0;
-        }
-        
-    }
-
-
     private void StartCountdown()
     {
         startCountdownTimerText.GetComponent<startCountdownTimer>().CountdownTimer(startCountdownLength);
@@ -207,4 +157,38 @@ public class GameManager : MonoBehaviour
         state = State.countdown;
     }
 
+    private void LevelDuration()
+    {
+        if(state == State.gameStarted)
+        {
+            timeleft -= Time.deltaTime;
+            if(timeleft <= 0)
+            {
+                state = State.gameOver;
+                uIanim.SetTrigger("gameOver");
+            }
+        }
+    }
+
+
+    private void ClearList(List<GameObject> listToClear, bool destroyObject)
+    {
+        if (destroyObject)
+        {
+            foreach (GameObject game in listToClear)
+            {
+                Destroy(game);
+            }
+            listToClear.Clear();
+            listToClear.TrimExcess();
+            listToClear.Capacity = 0;
+        }
+        else
+        {
+            listToClear.Clear();
+            listToClear.TrimExcess();
+            listToClear.Capacity = 0;
+        }
+
+    }
 }
