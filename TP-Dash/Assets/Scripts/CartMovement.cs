@@ -17,7 +17,7 @@ public class CartMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(GameManager.gm.gameState == GameManager.GameState.started)
+        if(GameManager.gm.state == GameManager.State.gameStarted)
         {
             if (Input.GetAxisRaw("Vertical") > 0)// Moving Forward
             {

@@ -10,11 +10,12 @@ public class UITimerCountdown : MonoBehaviour
 
     private void Update()
     {
-        maxTime = GameManager.gm.maxTime;
+        /*maxTime = GameManager.gm.maxTime;
         timeleft = GameManager.gm.timeleft;
-        if(GameManager.gm.gameState == GameManager.GameState.started)
+        if(GameManager.gm.state == GameManager.State.gameStarted)
         {
             GetComponent<Text>().text = ("Time Left : " + Mathf.RoundToInt(timeleft).ToString());
         }
+        */
     }
 }

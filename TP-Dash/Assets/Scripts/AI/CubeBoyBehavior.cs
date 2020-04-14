@@ -131,7 +131,7 @@ public class CubeBoyBehavior : MonoBehaviour
                 currentState = State.patrol;
             }
         }
-        if(GameManager.gm.gameState == GameManager.GameState.gameOver)
+        if(GameManager.gm.state == GameManager.State.gameOver)
         {
             currentState = State.paused;
             agent.destination = transform.position;

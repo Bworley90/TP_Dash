@@ -9,7 +9,7 @@ public class LoadingScene : MonoBehaviour
 
     public void OkButton()
     {
-        GameManager.gm.LoadSceneAsync();
+        //GameManager.gm.LoadSceneAsync();
     }
 
 

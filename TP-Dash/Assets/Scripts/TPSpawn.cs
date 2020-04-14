@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TPSpawn : MonoBehaviour
 {
-    [SerializeField]
-    Transform[] spawnPoints;
+    public Transform[] spawnPoints;
+
     public void SpawnTP()
     {
         foreach(Transform point in spawnPoints)
