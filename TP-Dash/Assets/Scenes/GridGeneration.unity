@@ -614,7 +614,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
-
+--- !u!114 &202529271
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -629,11 +629,10 @@ MonoBehaviour:
   sides:
   - {fileID: 4333773389519069420, guid: 86379af690b5f3b418217a4d838c8923, type: 3}
   corners:
-  - {fileID: 4333773389519069420, guid: 1674fb3c9a5ae9f45a52c10c3b3c18b4, type: 3}
   - {fileID: 4333773389519069420, guid: 41f5a7ec3b77b264bb5850eb9e1e1352, type: 3}
+  - {fileID: 4333773389519069420, guid: 1674fb3c9a5ae9f45a52c10c3b3c18b4, type: 3}
   middles:
   - {fileID: 4333773389519069420, guid: 062de1c8668d3a64a8379a36ca041343, type: 3}
-  - {fileID: 4333773389519069420, guid: d825c51e4d1dbeb4ea7729c56bf0cbf4, type: 3}
   starts:
   - {fileID: 4333773389519069420, guid: 6914a42ddc659b643954f96039cc3ab7, type: 3}
 --- !u!4 &202529272
