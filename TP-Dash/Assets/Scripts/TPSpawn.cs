@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class TPSpawn : MonoBehaviour
 {
-    [SerializeField]
-    Transform[] spawnPoints;
+    public Transform[] spawnPoints;
+    List<Transform> usedPoints = new List<Transform>();
+
     public void SpawnTP()
     {
         foreach(Transform point in spawnPoints)
@@ -17,8 +18,17 @@ public class TPSpawn : MonoBehaviour
                 {
                     try
                     {
-                        Instantiate(GameManager.gm.tp, point);
-                        GameManager.gm.tpSpawned++;
+                        if(!usedPoints.Contains(point))
+                        {
+                            Instantiate(StaticVariables.statics.tp, point);
+                            GameManager.gm.tpSpawned++;
+                            usedPoints.Add(point);
+                        }
+                        else
+                        {
+                            print("There was TP there already");
+                        }
+                        
                     }
                     catch
                     {
