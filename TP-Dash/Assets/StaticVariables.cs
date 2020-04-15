@@ -27,6 +27,9 @@ public class StaticVariables : MonoBehaviour
     public float cartSpeed;
     public float levelDuration;
     public float discoverDistance;
+    public float luckyStrike;
+    public float tpMoney;
+
 
     [Header("GameObjects")]
     public GameObject tp;
@@ -35,16 +38,31 @@ public class StaticVariables : MonoBehaviour
     [Header("Original Settings")]
     private int originalDifficulty;
     private int originalTpNeeded;
+    private float cartSpeedOriginal;
+    private float levelDurationOriginal;
+    private float discoverDistanceOriginal;
+    private float luckyStrikeOriginal;
+    private float tpMoneyOriginal;
 
     private void Start()
     {
         originalDifficulty = difficulty;
         originalTpNeeded = tpNeeded;
+        cartSpeedOriginal = cartSpeed;
+        levelDurationOriginal = levelDuration;
+        discoverDistanceOriginal = discoverDistance;
+        luckyStrikeOriginal = luckyStrike;
+        tpMoneyOriginal = tpMoney;
     }
 
     public void RestoreSettings()
     {
         tpNeeded = originalTpNeeded;
         difficulty = originalDifficulty;
+        cartSpeed = cartSpeedOriginal;
+        levelDuration = levelDurationOriginal;
+        luckyStrike = discoverDistanceOriginal;
+        discoverDistance = discoverDistanceOriginal;
+        tpMoney = tpMoneyOriginal;
     }
 }

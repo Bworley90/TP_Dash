@@ -111,7 +111,7 @@ public class CubeBoyBehavior : MonoBehaviour
     {
         if(currentState == State.patrol)
         {
-            if(distanceToPlayer < spottedDistance)
+            if(distanceToPlayer < spottedDistance - StaticVariables.statics.discoverDistance)
             {
                 currentState = State.chasing;
             }

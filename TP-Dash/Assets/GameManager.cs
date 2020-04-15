@@ -56,7 +56,11 @@ public class GameManager : MonoBehaviour
     public List<GameObject> prefabRooms = new List<GameObject>();
     public List<GameObject> roomGenerators = new List<GameObject>();
 
-
+    [Header("BuyMenu")]
+    public int cartSpeedIncrease;
+    public int luckyStrikeAmount;
+    public int discoverDistanceAmount;
+    public int levelDurationIncreaseAmount;
 
 
 
@@ -92,6 +96,10 @@ public class GameManager : MonoBehaviour
     {
         if(numberOfTPCheckedOut >= StaticVariables.statics.tpNeeded && tpCollected <= 0)
         {
+            if(tpCollected > StaticVariables.statics.tpNeeded)
+            {
+                StaticVariables.statics.tpMoney = (tpCollected - StaticVariables.statics.tpNeeded);
+            }
             //Animation here
             uIanim.SetTrigger("roundEnd");
             state = State.nextLevel;
