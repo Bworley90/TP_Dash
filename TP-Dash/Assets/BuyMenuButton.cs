@@ -15,7 +15,7 @@ public class BuyMenuButton : MonoBehaviour
 
     public void UpgradeSpeed()
     {
-        if(StaticVariables.statics.tpMoney > 1)
+        if(StaticVariables.statics.tpMoney > 0)
         {
             StaticVariables.statics.cartSpeed += GameManager.gm.cartSpeedIncrease;
             StaticVariables.statics.tpMoney--;
@@ -25,7 +25,7 @@ public class BuyMenuButton : MonoBehaviour
 
     public void UpgradeLuckyStrike()
     {
-        if(StaticVariables.statics.tpMoney > 1)
+        if(StaticVariables.statics.tpMoney > 0)
         {
             StaticVariables.statics.luckyStrike += GameManager.gm.luckyStrikeAmount;
             StaticVariables.statics.tpMoney--;
@@ -34,7 +34,7 @@ public class BuyMenuButton : MonoBehaviour
 
     public void UpgradeDiscoveryDuration()
     {
-        if(StaticVariables.statics.tpMoney > 1)
+        if(StaticVariables.statics.tpMoney > 0)
         {
             StaticVariables.statics.discoverDistance += GameManager.gm.discoverDistanceAmount;
             StaticVariables.statics.tpMoney--;
@@ -43,7 +43,7 @@ public class BuyMenuButton : MonoBehaviour
 
     public void UpgradeTimeDuration()
     {
-        if (StaticVariables.statics.tpMoney > 1)
+        if (StaticVariables.statics.tpMoney > 0)
         {
             StaticVariables.statics.levelDuration += GameManager.gm.levelDurationIncreaseAmount;
             StaticVariables.statics.tpMoney--;

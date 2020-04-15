@@ -940,7 +940,7 @@ MonoBehaviour:
   tpCollected: 0
   tpTotal: 10
   tpSpawned: 0
-  numberOfTPCheckedOut: 2
+  numberOfTPCheckedOut: 0
   checkingOut: 0
   timeleft: 0
   maxTime: 3
@@ -948,10 +948,10 @@ MonoBehaviour:
   timeBetweenTpSold: 0.35
   prefabRooms: []
   roomGenerators: []
-  cartSpeedIncrease: 0
-  luckyStrikeAmount: 0
-  discoverDistanceAmount: 0
-  levelDurationIncreaseAmount: 0
+  cartSpeedIncrease: 5
+  luckyStrikeAmount: 5
+  discoverDistanceAmount: 5
+  levelDurationIncreaseAmount: 2
 --- !u!1 &382777226
 GameObject:
   m_ObjectHideFlags: 0
@@ -5176,7 +5176,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1720347648}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1462234870}
+        m_MethodName: ExitButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1720347648
 MonoBehaviour:
   m_ObjectHideFlags: 0

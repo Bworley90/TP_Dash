@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Time")]
     public float timeleft;
-    public int maxTime;
+    public float maxTime;
     public Text timerText;
 
     [Header("Checkout")]
@@ -69,7 +69,9 @@ public class GameManager : MonoBehaviour
         state = State.generateLevel;
         uIanim = GameObject.FindGameObjectWithTag("InGameUI").GetComponent<Animator>();
         gm = this;
+        maxTime = StaticVariables.statics.levelDuration;
         timeleft = maxTime;
+        
     }
 
     private void Update()
@@ -96,9 +98,9 @@ public class GameManager : MonoBehaviour
     {
         if(numberOfTPCheckedOut >= StaticVariables.statics.tpNeeded && tpCollected <= 0)
         {
-            if(tpCollected > StaticVariables.statics.tpNeeded)
+            if(numberOfTPCheckedOut > StaticVariables.statics.tpNeeded)
             {
-                StaticVariables.statics.tpMoney = (tpCollected - StaticVariables.statics.tpNeeded);
+                StaticVariables.statics.tpMoney = (numberOfTPCheckedOut - StaticVariables.statics.tpNeeded);
             }
             //Animation here
             uIanim.SetTrigger("roundEnd");
