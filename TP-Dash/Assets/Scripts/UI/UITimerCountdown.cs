@@ -10,11 +10,11 @@ public class UITimerCountdown : MonoBehaviour
     {
         if(GameManager.gm.state == GameManager.State.gameStarted)
         {
-            GetComponent<Text>().text = ("Time Left : " + Mathf.RoundToInt(GameManager.gm.timeleft).ToString());
+            GetComponent<Text>().text = ("TIME LEFT: " + Mathf.RoundToInt(GameManager.gm.timeleft).ToString());
         }
         else if(GameManager.gm.state == GameManager.State.gameOver)
         {
-            GetComponent<Text>().text = "Game Over";
+            GetComponent<Text>().text = "GAME OVER";
         }
     }
 }

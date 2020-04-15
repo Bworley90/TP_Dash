@@ -36,8 +36,8 @@ public class RoundEndMenu : MonoBehaviour
 
     public void levelCompleteContinue()
     {
+        GameObject.FindGameObjectWithTag("InGameUI").GetComponent<Animator>().SetTrigger("buyMenu");
         StaticVariables.statics.tpNeeded += StaticVariables.statics.difficulty;
-        SceneManager.LoadScene(2);
     }
 
     public void gameOverContinue()

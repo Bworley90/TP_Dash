@@ -6,9 +6,9 @@ public class CartMovement : MonoBehaviour
 {
     private Rigidbody rb;
     private Vector3 change;
-    public float speed;
     [Range(0f, 10f)]
     public float turnSpeed;
+    private float speed;
     void Start()
     {
         rb = GetComponent<Rigidbody>();   
@@ -17,6 +17,7 @@ public class CartMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        speed = StaticVariables.statics.cartSpeed;
         if(GameManager.gm.state == GameManager.State.gameStarted)
         {
             if (Input.GetAxisRaw("Vertical") > 0)// Moving Forward

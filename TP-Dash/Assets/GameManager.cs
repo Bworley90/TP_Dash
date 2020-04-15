@@ -41,10 +41,11 @@ public class GameManager : MonoBehaviour
     public int tpTotal;
     public int tpSpawned;
     public int numberOfTPCheckedOut;
+    public bool checkingOut;
 
     [Header("Time")]
     public float timeleft;
-    public int maxTime;
+    public float maxTime;
     public Text timerText;
 
     [Header("Checkout")]
@@ -55,7 +56,11 @@ public class GameManager : MonoBehaviour
     public List<GameObject> prefabRooms = new List<GameObject>();
     public List<GameObject> roomGenerators = new List<GameObject>();
 
-
+    [Header("BuyMenu")]
+    public int cartSpeedIncrease;
+    public int luckyStrikeAmount;
+    public int discoverDistanceAmount;
+    public int levelDurationIncreaseAmount;
 
 
 
@@ -64,7 +69,9 @@ public class GameManager : MonoBehaviour
         state = State.generateLevel;
         uIanim = GameObject.FindGameObjectWithTag("InGameUI").GetComponent<Animator>();
         gm = this;
+        maxTime = StaticVariables.statics.levelDuration;
         timeleft = maxTime;
+        
     }
 
     private void Update()
@@ -89,8 +96,12 @@ public class GameManager : MonoBehaviour
 
     private void CheckForWinCondition()
     {
-        if(numberOfTPCheckedOut >= StaticVariables.statics.tpNeeded)
+        if(numberOfTPCheckedOut >= StaticVariables.statics.tpNeeded && tpCollected <= 0)
         {
+            if(numberOfTPCheckedOut > StaticVariables.statics.tpNeeded)
+            {
+                StaticVariables.statics.tpMoney = (numberOfTPCheckedOut - StaticVariables.statics.tpNeeded);
+            }
             //Animation here
             uIanim.SetTrigger("roundEnd");
             state = State.nextLevel;
@@ -165,7 +176,7 @@ public class GameManager : MonoBehaviour
 
     private void LevelDuration()
     {
-        if(state == State.gameStarted)
+        if(state == State.gameStarted && !checkingOut)
         {
             timeleft -= Time.deltaTime;
             if(timeleft <= 0)
