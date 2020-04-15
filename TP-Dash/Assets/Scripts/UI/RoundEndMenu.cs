@@ -15,7 +15,7 @@ public class RoundEndMenu : MonoBehaviour
 
     private void Update()
     {
-        timeLeftText.text = GameManager.gm.timeleft.ToString();
+        timeLeftText.text = Mathf.RoundToInt(GameManager.gm.timeleft).ToString();
         tpCollectedText.text = GameManager.gm.tpCollected.ToString();
         tpNeededText.text = StaticVariables.statics.tpNeeded.ToString();
         if(GameManager.gm.state == GameManager.State.gameOver)
