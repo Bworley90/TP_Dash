@@ -422,6 +422,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 867432179}
   m_CullTransparentMesh: 0
+--- !u!1 &1026107682
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1026107684}
+  - component: {fileID: 1026107683}
+  m_Layer: 0
+  m_Name: --StaticVaribles--
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1026107683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026107682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88fbbdb8d50f93b45b94367ee42d4624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficulty: 1
+  tp: {fileID: 2885629692911775870, guid: d9c9aa8d7c2e66f4fb5d2c616b989ce2, type: 3}
+--- !u!4 &1026107684
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026107682}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 202.9521, y: 163.78343, z: -1048.875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1454284458
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,8 +764,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da6f258ce9ab9a841989cb06ac0e36ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  okButton: {fileID: 2104545391}
-  okButtonText: {fileID: 171002083}
 --- !u!1 &1917162189
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,11 +864,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1904441804}
         m_MethodName: OkButton
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

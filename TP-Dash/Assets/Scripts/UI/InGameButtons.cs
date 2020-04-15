@@ -8,6 +8,7 @@ public class InGameButtons : MonoBehaviour
 {
     public void Retry()
     {
+        StaticVariables.statics.RestoreSettings();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
  

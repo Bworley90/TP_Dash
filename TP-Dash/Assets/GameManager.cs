@@ -40,8 +40,6 @@ public class GameManager : MonoBehaviour
     public int tpCollected;
     public int tpTotal;
     public int tpSpawned;
-    public int difficulty;
-    public GameObject tp;
     public int numberOfTPCheckedOut;
 
     [Header("Time")]
@@ -65,7 +63,6 @@ public class GameManager : MonoBehaviour
     {
         state = State.generateLevel;
         uIanim = GameObject.FindGameObjectWithTag("InGameUI").GetComponent<Animator>();
-        print("Test");
         gm = this;
         timeleft = maxTime;
     }
@@ -83,13 +80,22 @@ public class GameManager : MonoBehaviour
         else if(state == State.gameStarted)
         {
             LevelDuration();
+            CheckForWinCondition();
         }
 
     }
 
 
 
-    
+    private void CheckForWinCondition()
+    {
+        if(numberOfTPCheckedOut >= StaticVariables.statics.tpNeeded)
+        {
+            //Animation here
+            uIanim.SetTrigger("roundEnd");
+            state = State.nextLevel;
+        }
+    }
 
     private void SpawnRoomPrefab()
     {
@@ -164,8 +170,9 @@ public class GameManager : MonoBehaviour
             timeleft -= Time.deltaTime;
             if(timeleft <= 0)
             {
+                uIanim.SetTrigger("roundEnd");
                 state = State.gameOver;
-                uIanim.SetTrigger("gameOver");
+                
             }
         }
     }

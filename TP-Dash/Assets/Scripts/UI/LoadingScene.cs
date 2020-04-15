@@ -5,11 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class LoadingScene : MonoBehaviour
 {
-    AsyncOperation async = new AsyncOperation();
-
-    public void OkButton()
+    public void OkButton(int sceneNumber)
     {
-        //GameManager.gm.LoadSceneAsync();
+        SceneManager.LoadScene(sceneNumber);
     }
 
 
