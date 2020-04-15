@@ -24,6 +24,9 @@ public class StaticVariables : MonoBehaviour
     [Header("Variables")]
     public int difficulty;
     public int tpNeeded;
+    public float cartSpeed;
+    public float levelDuration;
+    public float discoverDistance;
 
     [Header("GameObjects")]
     public GameObject tp;

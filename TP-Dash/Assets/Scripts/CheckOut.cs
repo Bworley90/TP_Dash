@@ -5,7 +5,7 @@ using UnityEngine;
 public class CheckOut : MonoBehaviour
 {
     private GameManager gm;
-    private bool checkOutWait = false;
+    public bool checkOutWait = false;
 
     private void Start()
     {
@@ -22,16 +22,16 @@ public class CheckOut : MonoBehaviour
                 other.GetComponent<AudioSource>().PlayOneShot
                     (GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().checkOutNoise);
             }
-        }
-        
+        }  
     }
+
+    
 
 
     private IEnumerator TakeTP()
     {
         gm.tpCollected--;
         // Play some kinda animation for TP leaving cart
-        // Maybe sound here;
         gm.numberOfTPCheckedOut++;
         yield return new WaitForSeconds(gm.timeBetweenTpSold);
         checkOutWait = false;

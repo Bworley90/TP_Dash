@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     public int tpTotal;
     public int tpSpawned;
     public int numberOfTPCheckedOut;
+    public bool checkingOut;
 
     [Header("Time")]
     public float timeleft;
@@ -89,7 +90,7 @@ public class GameManager : MonoBehaviour
 
     private void CheckForWinCondition()
     {
-        if(numberOfTPCheckedOut >= StaticVariables.statics.tpNeeded)
+        if(numberOfTPCheckedOut >= StaticVariables.statics.tpNeeded && tpCollected <= 0)
         {
             //Animation here
             uIanim.SetTrigger("roundEnd");
@@ -165,7 +166,7 @@ public class GameManager : MonoBehaviour
 
     private void LevelDuration()
     {
-        if(state == State.gameStarted)
+        if(state == State.gameStarted && !checkingOut)
         {
             timeleft -= Time.deltaTime;
             if(timeleft <= 0)
