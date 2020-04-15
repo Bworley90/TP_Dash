@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
             LevelDuration();
             CheckForWinCondition();
         }
-
+        tpTotal = StaticVariables.statics.difficulty + 4;
     }
 
 

@@ -11,7 +11,7 @@ public class TPSpawn : MonoBehaviour
     {
         foreach(Transform point in spawnPoints)
         {
-            int rand = Random.Range(0, 6);
+            int rand = Random.Range(0, 20);
             if(GameManager.gm.tpSpawned < GameManager.gm.tpTotal)
             {
                 if (rand <= 1)
