@@ -553,11 +553,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7634049063517732632}
-  - component: {fileID: 3209698620329914487}
-  - component: {fileID: 3209698620329914485}
   - component: {fileID: 3209698620329914486}
   - component: {fileID: 7652548889424560476}
   - component: {fileID: 831862073766823676}
+  - component: {fileID: 559628810351396486}
   m_Layer: 0
   m_Name: Cart
   m_TagString: Player
@@ -587,35 +586,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!54 &3209698620329914487
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6893549734719802635}
-  serializedVersion: 2
-  m_Mass: 15000
-  m_Drag: 0
-  m_AngularDrag: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 84
-  m_CollisionDetection: 0
---- !u!65 &3209698620329914485
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6893549734719802635}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4.1994286, y: 2.500657, z: 2.4192348}
-  m_Center: {x: 0.19851875, y: -0.39593267, z: 0.051514864}
 --- !u!114 &3209698620329914486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -628,8 +598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 892cf9f5998626a489badcec14a9b166, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 60
-  turnSpeed: 4.33
+  turnSpeed: 1
 --- !u!82 &7652548889424560476
 AudioSource:
   m_ObjectHideFlags: 0
@@ -757,6 +726,24 @@ MonoBehaviour:
   - {fileID: 5349951103421513112}
   - {fileID: 1843943424789289090}
   - {fileID: 1629141810253016896}
+--- !u!143 &559628810351396486
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6893549734719802635}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 3.66
+  m_Radius: 1.75
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 1.38, y: 0, z: 0}
 --- !u!1001 &222716677902636873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1149,15 +1136,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cbb8a191b2899e4e88850e63e85f218, type: 3}
---- !u!4 &157099872226611860 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2184396668471181933, guid: 5cbb8a191b2899e4e88850e63e85f218,
-    type: 3}
-  m_PrefabInstance: {fileID: 2053263962829885689}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3780059784582357127 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2885629692911775870, guid: 5cbb8a191b2899e4e88850e63e85f218,
+    type: 3}
+  m_PrefabInstance: {fileID: 2053263962829885689}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &157099872226611860 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2184396668471181933, guid: 5cbb8a191b2899e4e88850e63e85f218,
     type: 3}
   m_PrefabInstance: {fileID: 2053263962829885689}
   m_PrefabAsset: {fileID: 0}

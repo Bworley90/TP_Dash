@@ -2,23 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class CartMovement : MonoBehaviour
 {
-    private Rigidbody rb;
-    private Vector3 change;
     [Range(0f, 10f)]
     public float turnSpeed;
     private float speed;
-    void Start()
+
+    private void Update()
     {
-        rb = GetComponent<Rigidbody>();   
+        MoveCart();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void MoveCart()
     {
         speed = StaticVariables.statics.cartSpeed;
-        if(GameManager.gm.state == GameManager.State.gameStarted)
+        if(Input.GetAxisRaw("Vertical") > 0)
+        {
+            GetComponent<CharacterController>().SimpleMove(speed * transform.TransformDirection(Vector3.right));
+        }
+        else if (Input.GetAxisRaw("Vertical") < 0)
+        {
+            GetComponent<CharacterController>().SimpleMove(speed * transform.TransformDirection(Vector3.left));
+        }
+        if (Input.GetAxisRaw("Horizontal") > 0)
+        {
+            transform.Rotate(0, turnSpeed, 0);
+        }
+        else if (Input.GetAxisRaw("Horizontal") < 0)
+        {
+            transform.Rotate(0, -1 * turnSpeed, 0);
+        }
+    }
+
+    /*private void Movement()
+    {
+        speed = StaticVariables.statics.cartSpeed;
+        if (GameManager.gm.state == GameManager.State.gameStarted)
         {
             if (Input.GetAxisRaw("Vertical") > 0)// Moving Forward
             {
@@ -45,6 +65,6 @@ public class CartMovement : MonoBehaviour
                 rb.angularVelocity = Vector3.zero;
             }
         }
-    }
+    }*/
         
 }
